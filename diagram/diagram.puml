@@ -1,0 +1,124 @@
+@startuml
+
+interface Function {
+    + accept(visitor: Visitor)
+}
+
+class Literal{
+    + value: double
+    + accept()
+}
+
+class ComposeFunction{
+    + composeFunctions(Function, Function)
+    - left: Function
+    - right: Function
+    + getOperator()
+
+}
+
+class Sum {
+    + sum(Function, Function)
+    + accept()
+}
+
+class Subtract{
+    + subtract (Function, Function)
+    + accept()
+}
+
+class Multiply {
+    + multiply(Function, Function)
+    + accept()
+}
+
+class Divide {
+    + divide(Function, Function)
+    + accept()
+}
+
+class Power {
+    + power(Function, Function)
+    + accept()
+}
+
+
+
+class Module {
+    + Module( Function)
+    + accept()
+}
+
+
+class Variable {
+    + Variable(String)
+    + accept()
+}
+
+interface Visitor{
+    + visit(Sum)
+    + visit(Subtract)
+    + visit(Multiply)
+    + visit(Division)
+    + visit(Power)
+    + visit(Module)
+    + visit(Number)
+    + visit(Variable)
+}
+
+class PrinterVisitor{
+    + print(Function)
+    + visitSum(Sum)
+    + visitSubtract(Subtract)
+    + visitMultiply(Multiply)
+    + visitDivision(Division)
+    + visitPower(Power)
+    + visitModule(Module)
+    + visitNumber(Number)
+    + visitVariable(Variable)
+    + visitLiteral(Literal)
+}
+
+class EvaluateVisitor{
+    + Evaluate(Function)
+    + visitSum(Sum)
+    + visitSubtract(Subtract)
+    + visitMultiply(Multiply)
+    + visitDivision(Division)
+    + visitPower(Power)
+    + visitModule(Module)
+    + visitNumber(Number)
+    + visitVariable(Variable)
+    + visitLiteral(Literal)
+}
+
+class ListVariablesVisitor{
+
+    + getVariables(Function)
+    + visitSum(Sum)
+    + visitSubtract(Subtract)
+    + visitMultiply(Multiply)
+    + visitDivision(Division)
+    + visitPower(Power)
+    + visitModule(Module)
+    + visitNumber(Number)
+    + visitVariable(Variable)
+    + visitLiteral(Literal)
+    }
+
+
+Subtract ..|> ComposeFunction
+Divide..|> ComposeFunction
+Multiply..|> ComposeFunction
+Power..|> ComposeFunction
+
+
+Function <|... Module
+Variable .|> Function
+Literal .|> Function
+ComposeFunction ..|> Function
+
+Visitor <|.. ListVariablesVisitor
+Visitor <|.. EvaluateVisitor
+Visitor <|.. PrinterVisitor
+@enduml
