@@ -1,11 +1,8 @@
-
 package edu.austral.ingsis.math.visitor.behaviours;
 
 import edu.austral.ingsis.math.visitor.*;
 import edu.austral.ingsis.math.visitor.functions.*;
 import edu.austral.ingsis.math.visitor.functions.Module;
-
-import java.util.Map;
 
 public class EvaluateVisitor implements Visitor<Double> {
 
@@ -30,12 +27,14 @@ public class EvaluateVisitor implements Visitor<Double> {
 
   @Override
   public Double visitSubtract(Subtract subtraction) {
-    return subtraction.getFirstArgument().accept(this) - subtraction.getSecondArgument().accept(this);
+    return subtraction.getFirstArgument().accept(this)
+        - subtraction.getSecondArgument().accept(this);
   }
 
   @Override
   public Double visitMultiplication(Multiplication multiplication) {
-    return multiplication.getFirstArgument().accept(this) * multiplication.getSecondArgument().accept(this);
+    return multiplication.getFirstArgument().accept(this)
+        * multiplication.getSecondArgument().accept(this);
   }
 
   @Override
@@ -50,6 +49,8 @@ public class EvaluateVisitor implements Visitor<Double> {
 
   @Override
   public Double visitModule(Module module) {
-    return module.getFunction().accept(this) > 0 ? module.getFunction().accept(this) : -module.getFunction().accept(this);
+    return module.getFunction().accept(this) > 0
+        ? module.getFunction().accept(this)
+        : -module.getFunction().accept(this);
   }
 }

@@ -37,7 +37,9 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction3() {
     EvaluateVisitor evaluateVisitor = new EvaluateVisitor();
-    Function mult = new Multiplication(new Division(new Literal(9), new Variable("x", 3d)), new Variable("y", 4d));
+    Function mult =
+        new Multiplication(
+            new Division(new Literal(9), new Variable("x", 3d)), new Variable("y", 4d));
     final Double result = evaluateVisitor.evaluate(mult);
 
     assertThat(result, equalTo(12d));
@@ -47,7 +49,8 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction4() {
     EvaluateVisitor evaluateVisitor = new EvaluateVisitor();
-    Function pow = new Power(new Division(new Literal(27), new Variable("a", 9d)), new Variable("b", 3d));
+    Function pow =
+        new Power(new Division(new Literal(27), new Variable("a", 9d)), new Variable("b", 3d));
     final Double result = evaluateVisitor.evaluate(pow);
 
     assertThat(result, equalTo(27d));
@@ -77,7 +80,10 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction7() {
     EvaluateVisitor evaluateVisitor = new EvaluateVisitor();
-    Function sub = new Subtract(new edu.austral.ingsis.math.visitor.functions.Module(new Variable("value", -8d)), new Literal(8));
+    Function sub =
+        new Subtract(
+            new edu.austral.ingsis.math.visitor.functions.Module(new Variable("value", -8d)),
+            new Literal(8));
     final Double result = evaluateVisitor.evaluate(sub);
 
     assertThat(result, equalTo(0d));
@@ -87,7 +93,8 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction8() {
     EvaluateVisitor evaluateVisitor = new EvaluateVisitor();
-    Function mult = new Multiplication(new Subtract(new Literal(5), new Variable("i", 2d)), new Literal(8));
+    Function mult =
+        new Multiplication(new Subtract(new Literal(5), new Variable("i", 2d)), new Literal(8));
     final Double result = evaluateVisitor.evaluate(mult);
 
     assertThat(result, equalTo(24d));

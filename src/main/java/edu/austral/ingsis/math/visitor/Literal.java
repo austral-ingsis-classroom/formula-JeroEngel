@@ -2,7 +2,7 @@ package edu.austral.ingsis.math.visitor;
 
 import edu.austral.ingsis.math.visitor.behaviours.Visitor;
 
-public class Literal implements Function{
+public class Literal implements Function {
   private final double value;
 
   public Literal(double value) {
@@ -12,6 +12,7 @@ public class Literal implements Function{
   public double getValue() {
     return value;
   }
+
   @Override
   public <T> T accept(Visitor<T> visitor) {
     return visitor.visitLiteral(this);

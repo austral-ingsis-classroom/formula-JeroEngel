@@ -2,7 +2,7 @@ package edu.austral.ingsis.math.visitor;
 
 import edu.austral.ingsis.math.visitor.behaviours.Visitor;
 
-public class Variable implements Function{
+public class Variable implements Function {
   private final String name;
   private final Double value;
 
@@ -18,6 +18,7 @@ public class Variable implements Function{
   public Double getValue() {
     return value;
   }
+
   @Override
   public <T> T accept(Visitor<T> visitor) {
     return visitor.visitVariable(this);

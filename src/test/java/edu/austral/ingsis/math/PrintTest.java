@@ -42,7 +42,8 @@ public class PrintTest {
   @Test
   public void shouldPrintFunction3() {
     final String expected = "( ( 9.0 / 2.0 ) * 3.0 )";
-    final Multiplication mult = new Multiplication(new Division(new Literal(9), new Literal(2)), new Literal(3));
+    final Multiplication mult =
+        new Multiplication(new Division(new Literal(9), new Literal(2)), new Literal(3));
     final String result = mult.accept(printVisitor);
 
     assertThat(result, equalTo(expected));
@@ -58,18 +59,19 @@ public class PrintTest {
   }
 
   @Test
-public void shouldPrintFunction6() {
-  final String expected = "( |value| - -8.0 )"; // changed from "( |value| - 8.0 )"
-  final Subtract sub = new Subtract(new Module(new Variable("value",1.0)), new Literal(-8));
-  final String result = sub.accept(printVisitor);
+  public void shouldPrintFunction6() {
+    final String expected = "( |value| - -8.0 )"; // changed from "( |value| - 8.0 )"
+    final Subtract sub = new Subtract(new Module(new Variable("value", 1.0)), new Literal(-8));
+    final String result = sub.accept(printVisitor);
 
-  assertThat(result, equalTo(expected));
-}
+    assertThat(result, equalTo(expected));
+  }
 
   @Test
   public void shouldPrintFunction8() {
     final String expected = "( ( 5.0 - i ) * 8.0 )";
-    final Multiplication mult = new Multiplication(new Subtract(new Literal(5), new Variable("i",1.0)), new Literal(8));
+    final Multiplication mult =
+        new Multiplication(new Subtract(new Literal(5), new Variable("i", 1.0)), new Literal(8));
     final String result = mult.accept(printVisitor);
 
     assertThat(result, equalTo(expected));

@@ -5,7 +5,6 @@ import edu.austral.ingsis.math.visitor.Literal;
 import edu.austral.ingsis.math.visitor.Variable;
 import edu.austral.ingsis.math.visitor.functions.*;
 import edu.austral.ingsis.math.visitor.functions.Module;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +13,7 @@ public class ListVariableVisitor implements Visitor<List<String>> {
   public List<String> getVariables(Function function) {
     return function.accept(this);
   }
+
   @Override
   public List<String> visitLiteral(Literal literal) {
     return List.of();

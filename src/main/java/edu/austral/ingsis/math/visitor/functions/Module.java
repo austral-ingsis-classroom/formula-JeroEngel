@@ -1,4 +1,3 @@
-
 package edu.austral.ingsis.math.visitor.functions;
 
 import edu.austral.ingsis.math.visitor.Function;
@@ -6,6 +5,7 @@ import edu.austral.ingsis.math.visitor.behaviours.Visitor;
 
 public class Module implements Function {
   private final Function function;
+
   public Module(Function function) {
     this.function = function;
   }
